@@ -1,24 +1,37 @@
 void setup()
 {
-  pinMode(8, OUTPUT);
-  pinMode(9, OUTPUT);
-  pinMode(13,OUTPUT);
+  pinMode(8, OUTPUT);////ENTRADA 2 PUENTE H CONECTADO A SALIDA PIN 8
+  pinMode(9, OUTPUT);//ENTRADA 1 PUENTE H COENCTADO A SALIDA PIN 9
+  pinMode(13,OUTPUT);// SALIDA PIN 13 LED INTEGRADO
 }
 
 void CambiaLed(){
-  digitalWrite(13,!digitalRead(13));
+  digitalWrite(13,!digitalRead(13));//LED INTEGRADO PIN 13
 }
 
 void loop()
 {
-  digitalWrite(9, HIGH);
+ /* TABLA DE FUNCIÓN ENTRADA 1 (EN) (TERMINAL 2 PUENTE H)A PIN 9 HIGH
+     SALIDA 1( TERMINAL 3 DEL PUENTE H CORRESPONDE A LA TABLA (1A)
+     SE BUSCA EN LA TABLA EN HIGH Y 1A LOW = PERMITE GIRO DERECHA */
+  
+  digitalWrite(9, HIGH);//ENTRADA 1
   digitalWrite(8, LOW);
-  delay(1000); // Espera 1 segundo (1000 milisegundos)
-  digitalWrite(9, HIGH);
-  digitalWrite(8, HIGH);
-  delay(500); // Espera 1 segundo (1000 milisegundos)
+  delay(1000); // // 1 SEGUNDO DE GIRO
+  
+   /* TABLA DE FUNCIÓN ENTRADA 1(EN) LOW = DETENCIÓN RÁPIDA */
+  digitalWrite(9, LOW);
+  delay(2000); // 2 SEGUNDOS DETENIDO EL MOTOR
+  
+  /* TABLA DE FUNCIÓN ENTRADA 2 (EN) (TERMINAL 7 PUENTE H)A PIN 8 HIGH
+     SALIDA 2(TERMINAL 6 DEL PUENTE H CORRESPONDE A LA TABLA (2A)
+     SE BUSCA EN LA TABLA (EN) HIGH Y 2A LOW = PERMITE GIRO IZQUIERDA */
+     
   digitalWrite(8, HIGH);
   digitalWrite(9, LOW);
-  delay(1000); // Espera 1 segundo (1000 milisegundos)
+  delay(2000); // 2 SEGUNDOS DE GIRO
+  /* TABLA DE FUNCIÓN ENTRADA (EN) LOW = DETENCIÓN RÁPIDA */
+ digitalWrite(8, LOW);
+ delay(2000); // 2 SEGUNDOS DETENIDO EL MOTOR
   CambiaLed();
 }
